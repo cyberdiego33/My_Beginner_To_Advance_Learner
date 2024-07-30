@@ -1,0 +1,70 @@
+import os, time
+
+def showbalance(balance):
+    print()
+    print(f'Your bank account balance is ${balance:.2f}')
+
+def deposit():
+    for i in range(3):
+        try:
+            print()
+            amount = input("Enter amount to deposit: ")
+            amount = float(amount)
+            if amount > 0:
+                print("DEPOSIT SUCCESSFUL\nHave a lovely day")
+                return amount
+            else:
+                print("DEPOSIT MUST BE GREATER THAN $1")
+        except:
+                print('Enter a valid amount')            
+    print("You have exceeded your deposit limit\nTry again in 12hours")
+    return 0 
+
+def withdraw(balance):
+    time = 3
+    for i in range(time):
+        print()
+        legit = True
+        try:
+            collect = float(input('Enter amount to withdraw: '))
+            if collect < 10.00:
+                print("WITHDRAWAL MUST BE ABOVE $10.00")
+                legit = False
+            elif balance < collect:
+                print("Insufficient Funds")
+                legit = False
+            elif legit:
+                print("WIDRAWAL SUCCESSFUL\nEnjoy your day")
+                return collect
+        except:
+            print("Invalid Input")
+    print()
+    print("You have reach your trial limit\nTry again in 12hours")
+    return 0 
+
+def main():
+    Exit = True
+    balance = 100
+
+    while Exit:
+        os.system('cls')
+        print("********************")
+        print("    Banking App")
+        print("********************")
+        print()
+        menu = input("1: Show Balance\n2: Deposit\n3: Withdraw\n4: Exit\nChoose Options from either 1 - 4 : ")
+        if menu == '1':
+            showbalance(balance)
+        elif menu == '2':
+            balance += deposit()
+        elif menu == '3':
+            balance -= withdraw(balance)
+        elif menu == '4':
+            Exit = False
+        else:
+            print("Input a valid option")
+        time.sleep(2)
+
+    print("THANKS FOR BANKING WITH US\nHave a nice day")
+
+main()
