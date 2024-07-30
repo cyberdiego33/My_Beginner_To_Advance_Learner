@@ -1,0 +1,61 @@
+
+import os, time
+users = []
+
+def add():
+    print()
+    same = True
+    username = input("Create a Login Username: ").strip().capitalize()
+    security = ''
+    while same:
+        password = input("Create a Password: ")
+        confirm = input("Confirm the Password: ")
+        if password == confirm:
+            security = password
+            print("Account Sign-up Successful")
+            same = False
+        else:
+            print("Incorrect Password\nRetry Creating Password")
+    f = open("username.txt", 'a+')
+    f.write(f"{username}: {security}\n")
+    f.close()
+
+def check():
+    print()
+    try:
+        f = open("username.txt", "r")
+        users = f.read()
+        f.close()
+    except:
+        print("Select Sign Up to create account")
+        return
+    name = input("Input Username: ").strip().capitalize()
+    password = input("Input your Password")
+    checker = f'{name}: {password}'
+    if checker in users:
+        print("Login Successful")
+    else:
+        print("Invalid Password or Username")
+    return
+
+def login():
+    Exit = True
+    while Exit:
+        os.system("cls")
+        print("*********************")
+        print("  BANK LOGIN SYSTEM")
+        print("*********************")
+        menu = input("1: Sign Up\n2: Sign In\n3: Exit\n>> ")
+        if menu == '1':
+            add()
+        elif menu == '2':
+            check()
+        elif menu == '3':
+            Exit = False
+        else:
+            print("Invalid Input")
+        time.sleep(2)
+    print("ENJOY YOUR DAY")
+    exit()
+
+login()
