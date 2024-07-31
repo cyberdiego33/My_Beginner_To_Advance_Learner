@@ -1,0 +1,103 @@
+
+import os, random, time
+
+def check( num, guess, round, trails, trail, won ):
+        print()
+        try:
+                guess = int(guess)
+        except:
+                if guess == 'Score':
+                        print(f"Rounds: {round}\nTotal trails: {trails}\nRound{round} trails: {trail}\nTotal Win: {won}")
+                else:
+                        print("Invalid input")
+                return False
+        rate = guess - num
+        rate2 = num - guess
+        if guess < 0 or guess > 100:
+                print("Choose between ( 1 - 100)")
+                return False
+        elif guess == num:
+                return True
+        elif guess > num and rate > 10:
+                print("Too High!")
+        elif guess > num and rate < 10:
+                print("High!")
+        elif num > guess and rate2 > 10:
+                print("Too Low!")
+        elif num > guess and rate2 < 10:
+                print("Low")
+        return False
+
+def Guessing(again, trails, trail, won, new, round):
+        while again:
+                os.system("cls")
+                print("---------------------------")
+                print("   NUMBER GUESSING GAME")
+                print("---------------------------")
+                number = random.randint(1,100)
+                round += 1
+                correct = True
+                while correct:
+                        print()
+                        trails += 1
+                        trail += 1
+                        guess = input("Guess the number ( 1 - 100)\n>> ").capitalize()
+                        right = check(number, guess, round, trails, trail, won)
+                        if right:
+                                print(f"Correct!\nYou won this round in {trail} tries")
+                                won += 1
+                                correct = False
+                        else:
+                                print("Try again")
+                                if trails >= new:
+                                        ask = input("You have reached 10 trials\nDo you want to continue the Game or start a new Game\nYes/No/New: ").strip().capitalize()
+                                        if ask == 'No':
+                                                again = False
+                                        elif ask == 'New':
+                                                correct = False
+                                        else:
+                                                new += 10
+                        time.sleep(3)
+                        os.system("cls")
+                print(f"Score: {won}\nTrails: {trails}\nYou Won {won} games in {trails} tries ")
+                print()
+                ask = input("Do you want play another round?: ").strip().capitalize()
+                if ask == 'No':
+                    exit()
+                time.sleep(4)
+        return
+
+def numberGuess():
+        again = True
+        trails = 0
+        trail = 0
+        round = 0
+        won = 0
+        new = 10
+        rules = f"""
+***********************************************
+        WELCOME TO NUMBER GUESSING GAME
+***********************************************
+
+Press 1 to start
+
+Choose a number between 1 - 100
+
+TIPS:
+    if your guess is correct it prints correct and adds score
+    if your guess is higher than the target by range 1 - 10 it prints High, elif it prints Too High
+    if your guess is lower than the target by range 1 - 10 it prints Low, elif it prints Too Low
+    if your trails is > 10 it asks if you want to continue/ new game or end
+    When you are about to input a new guess; you can input ( Score ) to view score
+    if input is string: Invalid Input   
+    """
+        print(rules)
+        start = input("Press 1 to start: ")
+        if start == '1':
+                Guessing(again, trails, trail, won, new, round)
+        else:
+                os.system('cls')
+                numberGuess()
+        if again == False:
+                exit()
+numberGuess()
