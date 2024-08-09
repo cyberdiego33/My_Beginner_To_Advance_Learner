@@ -1,0 +1,113 @@
+class job:
+  name = None
+  salary = None
+  hours = None
+
+  def __init__(self, name, salary, hours):
+    self.name = name
+    self.salary = salary
+    self.hours = hours
+
+  def talk(self):
+    return f"I am a {self.name} and paid {self.salary} per {self.hours} hour"
+
+class doctor(job):
+  experience = None
+  speciality = None
+
+  def __init__(self, salary, experience, speciality):
+    self.name = "doctor"
+    self.salary = salary
+    self.hours = 8
+    self.experience = experience
+    self.speciality = speciality
+
+  def talk(self):
+    return f"""I am a {self.name} that specailize on {self.speciality} and have {self.experience} years of experience, I am paid {self.salary} per {self.hours} hours"""
+
+class teacher(job):
+  subject = None
+  position = None
+
+  def __init__(self, salary, subject, position):
+    self.name = "teacher"
+    self.salary = salary
+    self.hours = 8
+    self.subject = subject
+    self.position = position
+
+  def talk(self):
+    return f"I am a {self.name} that teaches {self.subject} I hold the position of {self.position} and I am paid ${self.salary} per {self.hours} hours"
+
+
+
+saul = job("lawyer", '100', '1')
+print(f"My name is saul {saul.talk()}")
+print()
+
+chris = doctor('1000', '7', 'pediatric')
+print(f"My name is chris {chris.talk()}")
+print()
+
+walter = teacher('600', 'chemistry', 'Chemistry H.O.D')
+print(f"My name is walter white {walter.talk()}")
+print()
+
+  
+   class job:
+  name = None
+  salary = None
+  hours = None
+
+  def __init__(self, name, salary, hours):
+    self.name = name
+    self.salary = salary
+    self.hours = hours
+
+  def talk(self):
+    return f"I am a {self.name} and paid {self.salary} per {self.hours} hour"
+
+class doctor(job):
+  experience = None
+  speciality = None
+
+  def __init__(self, salary, experience, speciality):
+    self.name = "doctor"
+    self.salary = salary
+    self.hours = 8
+    self.experience = experience
+    self.speciality = speciality
+
+  def talk(self):
+    return f"""I am a {self.name} that specailize on {self.speciality} and have {self.experience} years of experience, I am paid {self.salary} per {self.hours} hours"""
+
+class teacher(job):
+  subject = None
+  position = None
+
+  def __init__(self, salary, subject, position):
+    self.name = "teacher"
+    self.salary = salary
+    self.hours = 8
+    self.subject = subject
+    self.position = position
+
+  def talk(self):
+    return f"I am a {self.name} that teaches {self.subject} I hold the position of {self.position} and I am paid ${self.salary} per {self.hours} hours"
+
+
+
+saul = job("lawyer", '100', '1')
+print(f"My name is saul {saul.talk()}")
+print()
+
+chris = doctor('1000', '7', 'pediatric')
+print(f"My name is chris {chris.talk()}")
+print()
+
+walter = teacher('600', 'chemistry', 'Chemistry H.O.D')
+print(f"My name is walter white {walter.talk()}")
+print()
+
+  
+   
